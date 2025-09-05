@@ -1,6 +1,7 @@
 # oneDNN-src
 
 [![GitHub License](https://img.shields.io/github/license/jkawamoto/onednn-src)](https://github.com/jkawamoto/onednn-src/blob/main/LICENSE)
+[![Build](https://github.com/jkawamoto/onednn-src/actions/workflows/build.yaml/badge.svg)](https://github.com/jkawamoto/onednn-src/actions/workflows/build.yaml)
 
 This crate provides the source build of
 [oneAPI Deep Neural Network Library (oneDNN)](https://github.com/uxlfoundation/oneDNN) for Rust projects.
