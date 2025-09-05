@@ -1,12 +1,12 @@
 [package]
 name = "onednn-src"
 version = "0.1.0"
-edition = "2024"
-links = "dnnl"
 authors = ["Junpei Kawamoto <kawamoto.junpei@gmail.com>"]
 categories = ["science"]
-license = "MIT"
+edition = "2024"
 keywords = ["deep-neural-networks", "deep-learning", "oneapi", "onednn"]
+license = "MIT"
+links = "dnnl"
 repository = "https://github.com/jkawamoto/onednn-src"
 description = "Source of oneAPI Deep Neural Network Library (oneDNN)"
 

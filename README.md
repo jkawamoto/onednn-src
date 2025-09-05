@@ -6,6 +6,7 @@ This crate provides the source build of
 [oneAPI Deep Neural Network Library (oneDNN)](https://github.com/uxlfoundation/oneDNN) for Rust projects.
 
 ## Usage
+
 Add this crate to your `Cargo.toml`:
 
 ```toml
@@ -24,6 +25,7 @@ which points to the root directory of the compiled oneDNN library.
 You can use this in your `build.rs` to locate the library.
 
 ## Features
+
 - `graph`: Enables the graph component.
 - `training`: Enables training functionality.
 - `inference`: Enables inference functionality.
@@ -35,8 +37,10 @@ The `training` and `inference` features are mutually exclusive.
 If neither is specified, `training` will be used.
 
 ## Rust Compatibility
+
 - Edition: Rust 2021
 - MSRV: 1.77 (Minimum Supported Rust Version)
 
 ## License
+
 This application is released under the MIT License. For details, see the [LICENSE](LICENSE) file.

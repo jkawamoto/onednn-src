@@ -1,0 +1,27 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: check-toml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/google/yamlfmt
+    rev: v0.17.2
+    hooks:
+      - id: yamlfmt
+  - repo: local
+    hooks:
+      - id: dprint
+        name: run dprint
+        entry: dprint fmt
+        language: system
+        files: \.(toml|md)$
+        types: [text]
+      - id: rustfmt
+        name: run rustfmt
+        entry: cargo fmt --
+        language: system
+        files: \.rs$
+        types: [text]
