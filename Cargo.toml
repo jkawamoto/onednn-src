@@ -4,6 +4,7 @@ version = "0.1.0"
 authors = ["Junpei Kawamoto <kawamoto.junpei@gmail.com>"]
 categories = ["science"]
 edition = "2024"
+exclude = [".*"]
 keywords = ["deep-neural-networks", "deep-learning", "oneapi", "onednn"]
 license = "MIT"
 links = "dnnl"
