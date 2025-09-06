@@ -12,7 +12,7 @@ Add this crate to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-onednn-src = "0.1.0"
+onednn-src = "0.1.1"
 ```
 
 Then, add the extern declaration to your `main.rs` or `lib.rs` to ensure the libraries are properly linked:
