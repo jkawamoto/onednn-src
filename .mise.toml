@@ -1,15 +1,15 @@
 [tools]
 dprint = "latest"
-pre-commit = "latest"
+uv = "latest"
 
 [tasks.pre-commit-all]
 description = "Run pre-commit hooks on all files"
 alias = "p"
-run = "pre-commit run -a"
+run = "uv tool run --with pre-commit-uv pre-commit run -a"
 
 [tasks.pre-commit-update]
 description = "Update pre-commit hooks to the latest versions"
-run = "pre-commit autoupdate"
+run = "uv tool run --with pre-commit-uv pre-commit autoupdate"
 
 [tasks.package]
 description = "Create a package after cleaning build artifacts"
@@ -17,3 +17,8 @@ run = [
     "cargo clean",
     "cargo package --allow-dirty"
 ]
+
+[tasks.bump-my-version]
+description = "Bump package version number"
+alias = "v"
+run = "uv tool run bump-my-version"
