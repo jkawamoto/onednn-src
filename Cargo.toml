@@ -4,7 +4,21 @@ version = "0.1.0"
 authors = ["Junpei Kawamoto <kawamoto.junpei@gmail.com>"]
 categories = ["science"]
 edition = "2024"
-exclude = [".*"]
+include = [
+    "/src",
+    "build.rs",
+    "LICENSE",
+    "/oneDNN/cmake",
+    "/oneDNN/include",
+    "/oneDNN/src",
+    "/oneDNN/examples/CMakeLists.txt",
+    "/oneDNN/tests/CMakeLists.txt",
+    "/oneDNN/third_party",
+    "/oneDNN/CMakeLists.txt",
+    "/oneDNN/LICENSE",
+    "/oneDNN/README.binary.in",
+    "/oneDNN/THIRD-PARTY-PROGRAMS",
+]
 keywords = ["deep-neural-networks", "deep-learning", "oneapi", "onednn"]
 license = "MIT"
 links = "dnnl"
