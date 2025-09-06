@@ -15,7 +15,7 @@
 //!
 //! ```toml
 //! [dependencies]
-//! onednn-src = "0.1.1"
+//! onednn-src = "0.1.2"
 //! ```
 //!
 //! Then, add the extern declaration to your `main.rs` or `lib.rs` to ensure the libraries are properly linked:
