@@ -1,5 +1,7 @@
 # oneDNN-src
 
+[![Latest version](https://img.shields.io/crates/v/onednn-src.svg)](https://crates.io/crates/onednn-src)
+[![docs.rs](https://img.shields.io/docsrs/onednn-src)](https://docs.rs/onednn-src)
 [![GitHub License](https://img.shields.io/github/license/jkawamoto/onednn-src)](https://github.com/jkawamoto/onednn-src/blob/main/LICENSE)
 [![Build](https://github.com/jkawamoto/onednn-src/actions/workflows/build.yaml/badge.svg)](https://github.com/jkawamoto/onednn-src/actions/workflows/build.yaml)
 
@@ -21,9 +23,11 @@ Then, add the extern declaration to your `main.rs` or `lib.rs` to ensure the lib
 extern crate onednn_src;
 ```
 
-This crate also exports the `DEP_DNNL_ROOT` environment variable,
-which points to the root directory of the compiled oneDNN library.
-You can use this in your `build.rs` to locate the library.
+This crate exports the following environment variables for locating the oneDNN library in your build scripts:
+
+- `DEP_DNNL_ROOT`: Points to the root directory containing the compiled oneDNN library and all its files,
+- `DEP_DNNL_INCLUDE_PATH`: Points to the directory containing oneDNN header files needed for compilation,
+- `DEP_DNNL_LIBRARY_PATH`: Points to the directory containing the compiled oneDNN static libraries.
 
 ## Features
 

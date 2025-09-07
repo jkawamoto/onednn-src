@@ -24,9 +24,11 @@
 //! extern crate onednn_src;
 //! ```
 //!
-//! This crate also exports the `DEP_DNNL_ROOT` environment variable,
-//! which points to the root directory of the compiled oneDNN library.
-//! You can use this in your `build.rs` to locate the library.
+//! This crate exports the following environment variables for locating the oneDNN library in your build scripts:
+//!
+//! - `DEP_DNNL_ROOT`: Points to the root directory containing the compiled oneDNN library and all its files,
+//! - `DEP_DNNL_INCLUDE_PATH`: Points to the directory containing oneDNN header files needed for compilation,
+//! - `DEP_DNNL_LIBRARY_PATH`: Points to the directory containing the compiled oneDNN static libraries.
 //!
 //! ## Features
 //!
