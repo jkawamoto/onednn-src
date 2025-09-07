@@ -52,4 +52,12 @@ fn main() {
     println!("cargo::rustc-link-search={}/lib", cmake.display());
     println!("cargo::rustc-link-lib=static=dnnl");
     println!("cargo::metadata=ROOT={}", cmake.display());
+    println!(
+        "cargo::metadata=INCLUDE_PATH={}",
+        cmake.join("include").display()
+    );
+    println!(
+        "cargo::metadata=LIBRARY_PATH={}",
+        cmake.join("lib").display()
+    );
 }
