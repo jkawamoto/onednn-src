@@ -40,6 +40,7 @@ fn main() {
         )
         .define("ONEDNN_EXPERIMENTAL", feature_to_str!("experimental"))
         .define("ONEDNN_VERBOSE", feature_to_str!("verbose"))
+        .define("ONEDNN_DEV_MODE", feature_to_str!("dev"))
         .build();
     println!("cargo::rustc-link-search={}/lib", cmake.display());
     println!("cargo::rustc-link-lib=static=dnnl");
