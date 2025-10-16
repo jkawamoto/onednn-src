@@ -34,8 +34,9 @@ This crate exports the following environment variables for locating the oneDNN l
 - `graph`: Enables the graph component.
 - `training`: Enables training functionality.
 - `inference`: Enables inference functionality.
-- `experimental`: Enables [experimental features](https://uxlfoundation.github.io/oneDNN/dev_guide_experimental.html#doxid-dev-guide-experimental)
-- `verbose`: Enables [verbose mode](https://uxlfoundation.github.io/oneDNN/dev_guide_verbose.html#doxid-dev-guide-verbose)
+- `experimental`: Enables [experimental features](https://uxlfoundation.github.io/oneDNN/dev_guide_experimental.html#doxid-dev-guide-experimental).
+- `verbose`: Enables [verbose mode](https://uxlfoundation.github.io/oneDNN/dev_guide_verbose.html#doxid-dev-guide-verbose).
+- `dev`: Enables development mode.
 
 By default, the `training` feature is enabled.
 The `training` and `inference` features are mutually exclusive.
