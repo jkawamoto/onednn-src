@@ -9,6 +9,19 @@
 use cmake::Config;
 use std::env;
 
+macro_rules! feature_to_str {
+    ($feature:literal) => {
+        if cfg!(feature = $feature) {
+            "ON"
+        } else {
+            "OFF"
+        }
+    };
+    ($feature:literal, $on:expr, $off:expr) => {
+        if cfg!(feature = $feature) { $on } else { $off }
+    };
+}
+
 fn main() {
     println!("cargo::rerun-if-changed=build.rs");
     if env::var("DOCS_RS").is_ok() {
@@ -20,34 +33,13 @@ fn main() {
         .define("ONEDNN_BUILD_DOC", "OFF")
         .define("ONEDNN_BUILD_EXAMPLES", "OFF")
         .define("ONEDNN_BUILD_TESTS", "OFF")
-        .define(
-            "ONEDNN_BUILD_GRAPH",
-            if cfg!(feature = "graph") { "ON" } else { "OFF" },
-        )
+        .define("ONEDNN_BUILD_GRAPH", feature_to_str!("graph"))
         .define(
             "ONEDNN_ENABLE_WORKLOAD",
-            if cfg!(feature = "inference") {
-                "INFERENCE"
-            } else {
-                "TRAINING"
-            },
+            feature_to_str!("inference", "INFERENCE", "TRAINING"),
         )
-        .define(
-            "ONEDNN_EXPERIMENTAL",
-            if cfg!(feature = "experimental") {
-                "ON"
-            } else {
-                "OFF"
-            },
-        )
-        .define(
-            "ONEDNN_VERBOSE",
-            if cfg!(feature = "verbose") {
-                "ON"
-            } else {
-                "OFF"
-            },
-        )
+        .define("ONEDNN_EXPERIMENTAL", feature_to_str!("experimental"))
+        .define("ONEDNN_VERBOSE", feature_to_str!("verbose"))
         .build();
     println!("cargo::rustc-link-search={}/lib", cmake.display());
     println!("cargo::rustc-link-lib=static=dnnl");
