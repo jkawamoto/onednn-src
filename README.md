@@ -39,7 +39,6 @@ This crate exports the following environment variables for locating the oneDNN l
 - `dev`: Enables development mode.
 - `armpl`: Uses the [Arm Performance Libraries](https://developer.arm.com/tools-and-software/server-and-hpc/downloads/arm-performance-libraries) (See also: [Vendor BLAS libraries](https://uxlfoundation.github.io/oneDNN/v3.9/dev_guide_build_options.html#vendor-blas-libraries)).
 
-By default, the `training` feature is enabled.
 The `training` and `inference` features are mutually exclusive.
 If neither is specified, `training` will be used.
 
