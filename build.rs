@@ -41,6 +41,16 @@ fn main() {
         .define("ONEDNN_EXPERIMENTAL", feature_to_str!("experimental"))
         .define("ONEDNN_VERBOSE", feature_to_str!("verbose"))
         .define("ONEDNN_DEV_MODE", feature_to_str!("dev"))
+        .define(
+            "ONEDNN_BLAS_VENDOR",
+            if cfg!(target_os = "macos") {
+                "ACCELERATE"
+            } else if cfg!(feature = "armpl") {
+                "ARMPL"
+            } else {
+                "NONE"
+            },
+        )
         .build();
     println!("cargo::rustc-link-search={}/lib", cmake.display());
     println!("cargo::rustc-link-lib=static=dnnl");
