@@ -12,8 +12,3 @@ replace = 'version = "{new_version}"'
 filename = "README.md"
 search = 'onednn-src = "{current_version}"'
 replace = 'onednn-src = "{new_version}"'
-
-[[tool.bumpversion.files]]
-filename = "src/lib.rs"
-search = 'onednn-src = "{current_version}"'
-replace = 'onednn-src = "{new_version}"'
