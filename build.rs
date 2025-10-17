@@ -30,6 +30,11 @@ fn main() {
     }
 
     let cmake = Config::new("oneDNN")
+        .cxxflag("-DACCELERATE_NEW_LAPACK")
+        .cxxflag("-DACCELERATE_LAPACK_ILP64")
+        .cxxflag("-H")
+        //.cxxflag("-D__ARM_BF16_H")
+        // .cflag("-D__ARM_BF16_H")
         .define("ONEDNN_LIBRARY_TYPE", "STATIC")
         .define("ONEDNN_BUILD_DOC", "OFF")
         .define("ONEDNN_BUILD_EXAMPLES", "OFF")
@@ -42,6 +47,7 @@ fn main() {
         .define("ONEDNN_EXPERIMENTAL", feature_to_str!("experimental"))
         .define("ONEDNN_VERBOSE", feature_to_str!("verbose"))
         .define("ONEDNN_DEV_MODE", feature_to_str!("dev"))
+        .define("ONEDNN_ENABLE_GEMM_KERNELS_ISA", "NONE")
         .define(
             "ONEDNN_BLAS_VENDOR",
             if cfg!(target_os = "macos") {
