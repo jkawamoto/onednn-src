@@ -2,6 +2,11 @@
 dprint = "latest"
 uv = "latest"
 
+[tasks.build]
+description = "Build the crate with verbose output"
+alias = "b"
+run = "cargo build -vv"
+
 [tasks.pre-commit-all]
 description = "Run pre-commit hooks on all files"
 alias = "p"
@@ -17,6 +22,11 @@ run = [
     "cargo clean",
     "cargo package --allow-dirty"
 ]
+
+[tasks.doc]
+description = "Generate documentation"
+env = { DOCS_RS = "1" }
+run = "cargo rustdoc -vv -- --cfg docsrs"
 
 [tasks.bump-my-version]
 description = "Bump package version number"
