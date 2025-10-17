@@ -1,5 +1,5 @@
 [tool.bumpversion]
-current_version = "0.1.2"
+current_version = "0.1.3"
 tag = false
 commit = true
 
@@ -10,10 +10,5 @@ replace = 'version = "{new_version}"'
 
 [[tool.bumpversion.files]]
 filename = "README.md"
-search = 'onednn-src = "{current_version}"'
-replace = 'onednn-src = "{new_version}"'
-
-[[tool.bumpversion.files]]
-filename = "src/lib.rs"
 search = 'onednn-src = "{current_version}"'
 replace = 'onednn-src = "{new_version}"'

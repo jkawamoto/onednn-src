@@ -14,7 +14,7 @@ Add this crate to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-onednn-src = "0.1.2"
+onednn-src = "0.1.3"
 ```
 
 Then, add the extern declaration to your `main.rs` or `lib.rs` to ensure the libraries are properly linked:
@@ -48,7 +48,8 @@ If neither is specified, `training` will be used.
 
 ## License
 
-This crate itself is licensed under the MIT License. See the [LICENSE](LICENSE) file.
+This crate itself is licensed under the MIT License.
+See the [LICENSE](https://github.com/jkawamoto/onednn-src/blob/main/LICENSE) file.
 
 oneDNN (which this crate builds and links to) is licensed under the Apache License, Version 2.0. If you redistribute binaries or source that include oneDNN, you must comply with the Apache-2.0 terms, including preserving license and notice files. For details, see oneDNN’s upstream LICENSE/NOTICE.
 
