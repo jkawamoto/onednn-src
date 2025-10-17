@@ -28,7 +28,7 @@ description = "Generate documentation"
 env = { DOCS_RS = "1" }
 run = "cargo rustdoc -vv -- --cfg docsrs"
 
-[tasks.bump-my-version]
+[tasks.bump]
 description = "Bump package version number"
 alias = "v"
-run = "uv tool run bump-my-version"
+run = "uv tool run bump-my-version bump"
