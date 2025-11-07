@@ -1,6 +1,6 @@
 [package]
 name = "onednn-src"
-version = "0.1.3"
+version = "0.1.4"
 authors = ["Junpei Kawamoto <kawamoto.junpei@gmail.com>"]
 categories = ["science"]
 edition = "2024"
