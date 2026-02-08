@@ -29,9 +29,11 @@ description = "Source of oneAPI Deep Neural Network Library (oneDNN)"
 cmake = "0.1"
 
 [features]
-default = ["training"]
+default = []
 graph = []
 training = []
 inference = []
 experimental = []
 verbose = []
+dev = []
+armpl = []
