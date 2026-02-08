@@ -7,30 +7,43 @@ description = "Build the crate with verbose output"
 alias = "b"
 run = "cargo build -vv"
 
-[tasks.pre-commit-all]
+[tasks.update]
+description = "Update pre-commit hooks to the latest versions"
+alias = "u"
+run = [
+    "cargo update",
+    "uv tool run --with pre-commit-uv pre-commit autoupdate"
+]
+depends_post = [
+    "build",
+    "pre-commit"
+]
+
+[tasks.pre-commit]
 description = "Run pre-commit hooks on all files"
 alias = "p"
 run = "uv tool run --with pre-commit-uv pre-commit run -a"
 
-[tasks.pre-commit-update]
-description = "Update pre-commit hooks to the latest versions"
-run = "uv tool run --with pre-commit-uv pre-commit autoupdate"
-depends_post = "pre-commit-all"
+[tasks.clean]
+description = "Remove all build artifacts"
+run = "cargo clean"
 
 [tasks.package]
 description = "Create a package after cleaning build artifacts"
-run = [
-    "cargo clean",
-    "cargo package --allow-dirty"
-]
+run = "cargo package --allow-dirty"
+depends = "clean"
 
 [tasks.doc]
 description = "Generate documentation"
 env = { DOCS_RS = "1" }
 run = "cargo rustdoc -vv -- --cfg docsrs"
+depends = "clean"
 
 [tasks.bump]
 description = "Bump package version number"
 alias = "v"
 run = "uv tool run bump-my-version bump"
-depends_post = "package"
+depends_post = [
+    "package",
+    "doc"
+]
