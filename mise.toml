@@ -32,14 +32,13 @@ run = "cargo clean"
 description = "Create a package after cleaning build artifacts"
 run = "cargo package --allow-dirty"
 depends = "clean"
-wait_for = ["clean"]
 
 [tasks.doc]
 description = "Generate documentation"
 env = { DOCS_RS = "1" }
 run = "cargo rustdoc -vv -- --cfg docsrs"
 depends = "clean"
-wait_for = ["clean"]
+wait_for = ["package"]
 
 [tasks.bump]
 description = "Bump package version number"

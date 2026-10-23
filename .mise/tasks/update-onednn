@@ -1,0 +1,60 @@
+#!/bin/sh
+#MISE description="Update oneDNN, bump the version, and create a pull request"
+set -eu
+
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+
+if [ -n "$(git status --porcelain)" ]; then
+    echo "working tree is not clean" >&2
+    exit 1
+fi
+
+command -v gh >/dev/null 2>&1 || {
+    echo "gh is required to create the pull request" >&2
+    exit 1
+}
+
+git switch bump
+git fetch origin main
+git rebase origin/main
+
+git -C oneDNN fetch --prune --tags
+tag="$(git -C oneDNN tag --list 'v*' --sort=-version:refname | head -n 1)"
+if [ -z "$tag" ]; then
+    echo "no oneDNN version tag found" >&2
+    exit 1
+fi
+
+git -C oneDNN checkout "$tag"
+git -C oneDNN submodule update --init --recursive
+
+git add oneDNN
+if ! git diff --cached --quiet; then
+    git commit -m "chore: update oneDNN to $tag"
+fi
+
+mise run update
+
+# mise run update may format or lint source files through pre-commit hooks.
+git add -u
+if ! git diff --cached --quiet; then
+    git commit -m "style: apply pre-commit fixes"
+fi
+
+mise run bump patch
+
+new_version="$(sed -n 's/^version = "\([^"]*\)"/\1/p' Cargo.toml | head -n 1)"
+if [ -z "$new_version" ]; then
+    echo "could not determine the new package version" >&2
+    exit 1
+fi
+
+git push --force-with-lease -u origin bump
+gh pr create \
+    --base main \
+    --head bump \
+    --title "Bump version: $new_version" \
+    --body "Update oneDNN and bump the package version to $new_version."
+
+git switch main
