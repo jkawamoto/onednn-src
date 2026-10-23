@@ -20,7 +20,8 @@ git fetch origin main
 git rebase origin/main
 
 git -C oneDNN fetch --prune --tags
-tag="$(git -C oneDNN tag --list 'v*' --sort=-version:refname | head -n 1)"
+# Release candidate tags such as v3.14.0-rc1 must not be selected.
+tag="$(git -C oneDNN tag --list 'v*' --sort=-version:refname | grep -v -- '-rc' | head -n 1)"
 if [ -z "$tag" ]; then
     echo "no oneDNN version tag found" >&2
     exit 1
