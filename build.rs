@@ -52,6 +52,11 @@ fn main() {
         .build();
     println!("cargo::rustc-link-search={}/lib", cmake.display());
     println!("cargo::rustc-link-lib=static=dnnl");
+    // oneDNN builds its KleidiAI kernels into a separate static library, which libdnnl.a calls.
+    // It does so by default on AArch64 (`AARCH64_USE_KAI` in oneDNN/cmake/options.cmake).
+    if cmake.join("lib/libkleidiai_ops.a").exists() {
+        println!("cargo::rustc-link-lib=static=kleidiai_ops");
+    }
     println!("cargo::metadata=ROOT={}", cmake.display());
     println!(
         "cargo::metadata=INCLUDE_PATH={}",
